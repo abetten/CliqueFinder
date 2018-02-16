@@ -5,7 +5,9 @@
 
 #include "typedefs.h"
 #include "misc_functions.h"
+
 #include "graph.h"
+#include "graph_algorithms.h"
 
 using namespace std;
 
@@ -74,7 +76,8 @@ int main(int argc, char** argv) {
 	
 	/*---------------------------------------------------------------------------------------------------*/
 	for (INT i=0; i<graph_set_cardinality; ++i) {
-		//GRAPH G(graph_sets[i],fname_template);
+		GRAPH G(graph_sets[i],fname_template);
+		graph_algorithms g_algo(G,graph_algorithms::Rainbow_Clique_Finding);
 	}
 	/*---------------------------------------------------------------------------------------------------*/
     

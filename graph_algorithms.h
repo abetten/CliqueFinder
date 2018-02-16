@@ -12,12 +12,13 @@
 #include "graph.h"
 
 
-
-
-
 class graph_algorithms {
 public:
-	graph_algorithms(GRAPH& graph) {
+	enum algorithm { // defines a list of implemented algorithms in this class
+		Rainbow_Clique_Finding
+	};
+	
+	graph_algorithms(GRAPH& graph, algorithm alg) {
 		
 	}
 
