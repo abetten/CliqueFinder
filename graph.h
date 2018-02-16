@@ -77,11 +77,11 @@ public:
 	inline bool is_adjacenct(INT i, INT j);
 	
 	// Class member variables
-	INT nb_points; // number of points in the graph
-	INT nb_colors; // number of colors in the graph
-	INT L;
-	INT bitvector_length; // length of the bit-vector
-	INT user_data_size;
+	INT nb_points = 0; // number of points in the graph
+	INT nb_colors = 0; // number of colors in the graph
+	INT L = 0;
+	INT bitvector_length = 0; // length of the bit-vector
+	INT user_data_size = 0;
 	INT* user_data = NULL;
 	INT* points = NULL; // array of points in the graph
 	INT* point_color = NULL; // the color of the respective point
