@@ -11,7 +11,7 @@
 
 #include "typedefs.h"
 
-inline void _replace(BYTE* string, BYTE character);
+inline void _replace(BYTE* string, BYTE character, const BYTE* replacement=NULL);
 
 inline INT bitvector_s_i(UBYTE *bitvec, INT i);
 inline INT ij2k(INT i, INT j, INT n);

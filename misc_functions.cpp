@@ -5,17 +5,21 @@
  * Created on Febryary 11, 2018, 6:39 PM
  */
 
-#include "misc_functions.h"
-#include "typedefs.h"
 #include <strings.h>
 #include <iostream>
+
+#include "typedefs.h"
+#include "misc_functions.h"
+
 
 using std::cout;
 using std::endl;
 
-inline void _replace(BYTE* string, BYTE character) {
+inline void _replace(BYTE* string, BYTE character,  const BYTE* replacement/*=NULL*/) {
+	// replace everything after a particular character
 	char* pch = strrchr(string, character); // pointer to last occurrence of character
 	string[pch-string] = '\0' ;  // add null terminator in place of the '.'
+	if (replacement) strcat(string, replacement);
 }
 
 inline INT bitvector_s_i(UBYTE *bitvec, INT i) {

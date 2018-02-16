@@ -14,7 +14,7 @@
 #include <string.h>
 #include <fstream>
 #include <math.h>
-#include "misc_functions.h"
+#include "misc_functions.cpp"
 
 using std::cout;
 using std::endl;
@@ -30,6 +30,7 @@ public:
 							  // and assign the result to fname
 		strcpy(fname_base, fname); // fname = fname_base
 		_replace(fname_base, '.'); // replace everything after '.' with nothing
+                
 		
 		fp = fopen(fname, "rb"); // open the graphs binary file
 		
