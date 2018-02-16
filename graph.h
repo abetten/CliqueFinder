@@ -42,8 +42,8 @@ public:
 		user_data = new INT[user_data_size];
 		for (INT i=0; i<user_data_size; ++i) fread(&user_data[i], 1, 4, fp);
 		
-		points = new INT[nb_points]; // allocate memory for each point in the graph
-		point_color = new INT[nb_points]; // allocate memory for the color of each point in the graph
+		points = new INT[nb_points](); // allocate memory for each point in the graph
+		point_color = new INT[nb_points](); // allocate memory for the color of each point in the graph
 		for (INT i=0; i<nb_points; ++i) {
 			fread(&points[i], 1, 4, fp);
 			fread(&point_color[i], 1, 4, fp);
@@ -58,17 +58,19 @@ public:
 		
 		L = (nb_points * (nb_points - 1)) >> 1; //number of entries in the linearized adj. matrix
 		bitvector_length = (L + 7) >> 3; // number of chars used to store the linearized adj. matrix
-		bitvector_adjacency = new UBYTE [bitvector_length];
+		bitvector_adjacency = new UBYTE [bitvector_length]();
 		fread(bitvector_adjacency, 1, bitvector_length, fp);
 		
 		adj_matrix = delinearize_adj_matrix(bitvector_adjacency, nb_points);
 		
+		fclose(fp);
 	}
 	~GRAPH() {
 		if (user_data) delete [] user_data;
 		if (points) delete [] points;
 		if (point_color) delete [] point_color;
 		if (bitvector_adjacency) delete [] bitvector_adjacency;
+		if (adj_matrix) for (INT i=0; i<nb_points; ++i) delete [] adj_matrix[i];
 		if (adj_matrix) delete [] adj_matrix;
 	}
 	
