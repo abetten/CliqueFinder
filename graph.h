@@ -1,4 +1,14 @@
 /*
+ * The purpose of this class is to only contain information pertaining to the 
+ * graph. This class should not contain any member functions that implement 
+ * any graph algorithms. The only member functions that this class is allowed to
+ * contain are the functions that read in data from an external source that the
+ * graph should contain. These member functions include, but are not limited to 
+ * delinearizing the adjacency vector to an adjacency matrix that si stored in 
+ * an instance of this class.
+ */
+
+/*
  * File:   graph.h
  * Author: Sajeeb
  *
