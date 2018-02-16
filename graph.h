@@ -1,5 +1,5 @@
 /*
- * File:   chrono.h
+ * File:   graph.h
  * Author: Sajeeb
  *
  * Created on Febryary 11, 2018, 6:11 PM
@@ -60,6 +60,7 @@ public:
 		bitvector_adjacency = new UBYTE [bitvector_length];
 		fread(bitvector_adjacency, 1, bitvector_length, fp);
 		
+		adj_matrix = delinearize_adj_matrix(bitvector_adjacency, nb_points);
 		
 	}
 	~GRAPH() {
@@ -72,6 +73,7 @@ public:
 	
 	// Class member functions
 	inline void print_adj_matrix(bool** matrix, INT matrix_order);
+	inline bool is_adjacenct(INT i, INT j);
 	
 	// Class member variables
 	INT nb_points; // number of points in the graph

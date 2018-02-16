@@ -1,5 +1,5 @@
 /*
- * File:   chrono.h
+ * File:   graph.cpp
  * Author: Sajeeb
  *
  * Created on Febryary 11, 2018, 6:56 PM
@@ -20,4 +20,9 @@ inline void GRAPH::print_adj_matrix(bool** matrix, INT matrix_order) {
 		}
 		cout<<endl;
 	}
+}
+
+
+inline bool GRAPH::is_adjacenct(INT i, INT j) {
+	return 
 }
