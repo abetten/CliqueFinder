@@ -7,6 +7,7 @@
 
 #include <strings.h>
 #include <iostream>
+#include <cstring>
 
 #include "typedefs.h"
 #include "misc_functions.h"
