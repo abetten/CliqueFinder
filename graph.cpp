@@ -22,7 +22,3 @@ inline void GRAPH::print_adj_matrix(bool** matrix, INT matrix_order) {
 	}
 }
 
-
-inline bool GRAPH::is_adjacenct(INT i, INT j) {
-	return GRAPH::adj_matrix[i][j];
-}

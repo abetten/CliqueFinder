@@ -21,17 +21,18 @@
 
 #include <iostream>
 #include <vector>
-
-using std::vector;
-
 #include "graph.h"
 #include "typedefs.h"
 
+#include "Rainbow_Clique_Finding.h"
+
+using std::vector;
 
 class graph_algorithms {
 public:
 	enum algorithm { // defines a list of implemented algorithms in this class
-		Rainbow_Clique_Finding
+		Rainbow_Clique_Finding,
+		Minimum_Spanning_Tree
 	};
 	
 	graph_algorithms(GRAPH& graph, algorithm alg) {
@@ -54,7 +55,7 @@ public:
 		this->algo = alg;
 	}
 	
-	inline void start_execution();
+	void start_execution();
 	
 	// member public variables
 	bool parallel_execution = false;

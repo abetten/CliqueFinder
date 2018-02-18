@@ -78,6 +78,7 @@ int main(int argc, char** argv) {
 	for (INT i=0; i<graph_set_cardinality; ++i) {
 		GRAPH G(graph_sets[i],fname_template);
 		graph_algorithms g_algo(G,graph_algorithms::Rainbow_Clique_Finding);
+		g_algo.start_execution();
 	}
 	/*---------------------------------------------------------------------------------------------------*/
     
