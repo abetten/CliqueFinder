@@ -25,6 +25,7 @@
 #include "typedefs.h"
 
 #include "Rainbow_Clique_Finding.h"
+#include "Bron_Kerbosch.h"
 
 using std::vector;
 
@@ -32,6 +33,7 @@ class graph_algorithms {
 public:
 	enum algorithm { // defines a list of implemented algorithms in this class
 		Rainbow_Clique_Finding,
+		Bron_Kerbosch, // Bron-Kerbosch max clique finding algorithm
 		Minimum_Spanning_Tree
 	};
 	

@@ -10,5 +10,10 @@
 void graph_algorithms::start_execution() {
 	if (algo == Rainbow_Clique_Finding) {
 		class Rainbow_Clique_Finding rcf(graph);
+		return;
+	}
+	if (algo == Bron_Kerbosch) {
+		class Bron_Kerbosch bk(graph);
+		return;
 	}
 }
