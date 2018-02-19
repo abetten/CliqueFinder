@@ -27,7 +27,7 @@ public:
 	// adapted from: https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm under the
 	// without pivoting section
 	// P -> vertex set of the graph
-	find_max_clique_without_pivoting(vector<INT> R, vector<INT> P, vector<INT> X);
+	void find_max_clique_without_pivoting(vector<INT>& R, vector<INT>& P, vector<INT>& X);
 	
 	~Bron_Kerbosch();
 	
