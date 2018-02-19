@@ -61,6 +61,11 @@ public:
 	
 	// member public variables
 	bool parallel_execution = false;
+	bool use_gpu_if_available = false; // if there is a GPU in the system, setting this flag
+					   // to true will make use of the GPU as defined by the
+					   // algorithm. If the algorithm does not support GPU
+					   // computing, then setting this flag will have no effect.
+	
 	// parallel_execution_type
 private:
 	GRAPH* graph = NULL; // can point to either an array of graphs or to a
