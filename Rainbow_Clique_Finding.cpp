@@ -65,12 +65,7 @@ inline INT Rainbow_Clique_Finding::min_element_index(INT* array, INT size) {
 			return_value = i;
 		}
 	}
-	for (INT i=0; i<size; ++i) {
-		if (array[i] == min_element) {
-			cout<< "multiple min_elements exists" <<endl;
-			break;
-		}
-	}
+	
 		
 	return return_value;
 }
@@ -142,13 +137,42 @@ void Rainbow_Clique_Finding::find_rainbow_cliques(INT depth) {
 
 void Rainbow_Clique_Finding::find_cliques_of_size_(INT k) {
 	cout<<"Starting Rainbow_Clique_Finding::find_cliques_of_size_"<<k<<endl;
-	bool** adj_matrix = new bool* [graph->nb_points];
-	for (INT i=0; i<graph->nb_points; ++i) {
-		adj_matrix[i] = new bool [graph->nb_points];
-		for (INT j=0; j<graph->nb_points; ++j) {
-			adj_matrix[i][j] = graph->adj_matrix[i][j];
+	vector<INT> P;
+	
+	//graph->complement();
+	
+	
+	INT counter =0;
+	
+	// delete verticies with less than k-1 adj. verticies
+	while (true) {
+		// delete all elements in P
+		P.clear();
+		// Find verticies with less than k-1 adj. verticies
+		for (INT i=0; i<graph->nb_points; ++i) {
+			if (graph->num_adj_verticies(i) != -1)
+				if (graph->num_adj_verticies(i) < k-1) P.push_back(i);
 		}
+		cout<<"verticies with less than "<<k-1<<" adj. verticies: ";
+		print_vector(P);
+		// delete verticies with less than k-1 adj. verticies
+		for (INT i=0; i<P.size(); ++i) {
+			for (INT j=0; j<graph->nb_points; ++j) {
+				graph->adj_matrix[P[i]][j] = false ;
+				graph->adj_matrix[j][P[i]] = false ;
+			}
+		}
+		if (P.size() == 0) break;
 	}
+	
+	graph->print_adj_matrix();
+	/*---------------------------------------------------------------------------------------------*/
+	// Actual k-clique finding algorithm
+	/*---------------------------------------------------------------------------------------------*/
+	
+	/*---------------------------------------------------------------------------------------------*/
+	
+	
 	
 	cout<<"Done Rainbow_Clique_Finding::find_cliques_of_size_"<<k<<endl;
 }

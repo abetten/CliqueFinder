@@ -62,6 +62,17 @@ private:
 	void find_rainbow_cliques(INT depth);
 	
 	void find_cliques_of_size_(INT k);
+	
+	inline void print_vector(vector<INT>& R) {
+		cout << "[ ";
+		for (UINT i = 0; i < R.size(); ++i) {
+			cout << R[i];
+			if (i + 1 != R.size()) {
+				cout << ", ";
+			}
+		}
+		cout << " ]" << endl;
+	}
 };
 
 #endif /* RAINBOW_CLIQUE_FINDING_H */

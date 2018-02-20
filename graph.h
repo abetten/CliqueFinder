@@ -88,7 +88,7 @@ public:
 	}
 
 	// Class member functions
-	inline void print_adj_matrix(bool** matrix, INT matrix_order);
+	void print_adj_matrix();
 
 	inline bool is_adjacenct(INT i, INT j) {
 		if (i < 0 || j < 0 || i >= nb_points || j >= nb_points) return 0;
@@ -106,6 +106,10 @@ public:
 	INT* point_color = NULL; // the color of the respective point
 	UBYTE* bitvector_adjacency = NULL; // liearized adjacency matrix
 	bool** adj_matrix = NULL; // adjacency matrix
+	
+	// Class member functions
+	INT num_adj_verticies(INT i);
+	void complement();
 
 private:
 
