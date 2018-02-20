@@ -60,6 +60,8 @@ private:
 	
 	// main algorithm function
 	void find_rainbow_cliques(INT depth);
+	
+	void find_cliques_of_size_(INT k);
 };
 
 #endif /* RAINBOW_CLIQUE_FINDING_H */

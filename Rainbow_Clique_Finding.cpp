@@ -38,10 +38,7 @@ Rainbow_Clique_Finding::Rainbow_Clique_Finding(GRAPH* graph_array, INT size) {
 		
 		cout<< "-------------------------------------------------------" <<endl;
 		
-		find_rainbow_cliques(0);
-		
-		cout<<"Done..."<<endl;
-		print_1_D_array(current_clique, graph->nb_colors);
+		find_cliques_of_size_(graph->nb_colors);
 	}
 	if (size !=0) cout<< "passed graphs array" <<endl;
 }
@@ -143,3 +140,15 @@ void Rainbow_Clique_Finding::find_rainbow_cliques(INT depth) {
 }
 
 
+void Rainbow_Clique_Finding::find_cliques_of_size_(INT k) {
+	cout<<"Starting Rainbow_Clique_Finding::find_cliques_of_size_"<<k<<endl;
+	bool** adj_matrix = new bool* [graph->nb_points];
+	for (INT i=0; i<graph->nb_points; ++i) {
+		adj_matrix[i] = new bool [graph->nb_points];
+		for (INT j=0; j<graph->nb_points; ++j) {
+			adj_matrix[i][j] = graph->adj_matrix[i][j];
+		}
+	}
+	
+	cout<<"Done Rainbow_Clique_Finding::find_cliques_of_size_"<<k<<endl;
+}

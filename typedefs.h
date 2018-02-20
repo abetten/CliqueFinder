@@ -11,7 +11,7 @@
 #define TYPEDEF_H
 
 typedef long int INT;
-typedef unsigned long UINT;
+typedef unsigned long int UINT;
 typedef char BYTE;
 typedef unsigned char UBYTE;
 typedef int INT4;
