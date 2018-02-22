@@ -5,8 +5,6 @@
  * Created on February 16, 2018, 5:52 PM
  */
 
-// change
-
 #include "Rainbow_Clique_Finding.h"
 #include <algorithm>
 #include <cstdint>
