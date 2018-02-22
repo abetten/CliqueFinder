@@ -1,7 +1,10 @@
 # -*- MakeFile -*-
 
-all: *.cpp *.h
-	g++ -O3 -march=native -mtune=native -I . -Wall *.cpp -o main
+ALGORITHMS=
+OPTIMIZATION_FLAGS=-O3 -march=native -mtune=native
+
+all:
+	g++  *.cpp -o main -I./headers $(ALGORITHMS)
 
 clean:
 	rm -rfv ./main

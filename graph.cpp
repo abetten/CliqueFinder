@@ -8,6 +8,7 @@
 
 #include "graph.h"
 #include "typedefs.h"
+#include "misc_functions.cpp"
 #include <iostream>
 
 using std::cout;
@@ -43,10 +44,31 @@ INT GRAPH::num_adj_verticies(INT i) {
  * graph object.
  */
 void GRAPH::complement() {
-	for (INT i=0; i<nb_points; ++i) {
-		for (INT j=0; j<nb_points; ++j) {
+	for (INT i = 0; i < nb_points; ++i) {
+		for (INT j = 0; j < nb_points; ++j) {
 			if (adj_matrix[i][j] == 0) adj_matrix[i][j] = 1;
 			else if (adj_matrix[i][j] == 1) adj_matrix[i][j] = 0;
 		}
+	}
+}
+
+void GRAPH::delete_verticies_with_degree(INT K) {
+	vector<INT> P;
+	while (true) {
+		// delete all elements in P
+		P.clear();
+		// Find verticies with less than k-1 adj. verticies
+		for (INT i=0; i<nb_points; ++i) {
+			if (num_adj_verticies(i) != -1)
+				if (num_adj_verticies(i) < K) P.push_back(i);
+		}
+		// delete verticies with less than k-1 adj. verticies
+		for (INT i=0; i<P.size(); ++i) {
+			for (INT j=0; j<nb_points; ++j) {
+				adj_matrix[P[i]][j] = false ;
+				adj_matrix[j][P[i]] = false ;
+			}
+		}
+		if (P.size() == 0) break;
 	}
 }

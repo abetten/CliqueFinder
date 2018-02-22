@@ -44,6 +44,8 @@ public:
 	
 	
 private:
+	vector<vector<INT>> solutions;
+	
 	GRAPH* graph = NULL;
 	vector<GRAPH*>* graph_vector = NULL;
 	INT graph_array_size = -1;
@@ -62,6 +64,8 @@ private:
 	void find_rainbow_cliques(INT depth);
 	
 	void find_cliques_of_size_(INT k);
+	
+	bool all_color_satisfied();
 	
 	inline void print_vector(vector<INT>& R) {
 		cout << "[ ";

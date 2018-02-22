@@ -25,8 +25,10 @@
 #include <string.h>
 #include <fstream>
 #include <math.h>
+#include <vector>
 #include "misc_functions.cpp"
 
+using std::vector;
 using std::cout;
 using std::endl;
 
@@ -110,6 +112,7 @@ public:
 	// Class member functions
 	INT num_adj_verticies(INT i);
 	void complement();
+	void delete_verticies_with_degree(INT K);
 
 private:
 

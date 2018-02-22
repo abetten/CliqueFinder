@@ -4,7 +4,7 @@
 #include "chrono.h"
 
 #include "typedefs.h"
-#include "misc_functions.h"
+#include "misc_functions.cpp"
 
 #include "graph.h"
 #include "graph_algorithms.h"
@@ -28,12 +28,14 @@ int main(int argc, char** argv) {
 		if (strcmp(argv[i], "-v") == 0) {
 			verbose_level = atoi(argv[++i]);
 			cout << "-v " << verbose_level << endl;
-		} else if (strcmp(argv[i], "-list_of_cases") == 0) {
+		}
+		if (strcmp(argv[i], "-list_of_cases") == 0) {
 			f_list_of_cases = TRUE;
 			fname_list_of_cases = argv[++i];
 			fname_template = argv[++i];
 			cout << "-list_of_cases " << fname_list_of_cases << " " << fname_template << endl;
-		} else if (strcmp(argv[i], "-output_file") == 0) {
+		}
+		if (strcmp(argv[i], "-output_file") == 0) {
 			f_output_file = TRUE;
 			output_file = argv[++i];
 			cout << "-output_file " << output_file << endl;
