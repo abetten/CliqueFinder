@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <limits>
+#include "chrono.h"
 
 using std::fill;
 
@@ -38,12 +39,16 @@ Rainbow_Clique_Finding::Rainbow_Clique_Finding(GRAPH* graph_array, INT size) {
 		this->color_frequency = new INT[this->graph->nb_colors]();
 		this->nb_live_points_at_depth = new INT [graph->nb_colors]();
 		
-		graph->print_adj_matrix();
-		graph->delete_verticies_with_degree(graph->nb_colors-1);
+		//graph->print_adj_matrix();
+		//graph->delete_verticies_with_degree(graph->nb_colors-1);
 		
 		cout<< "-------------------------------------------------------" <<endl;
 		
+		chrono C1;
+		
 		find_rainbow_cliques(0);
+		
+		cout << "Rainbow clique finding took " << C1.calculateDuration() << " milliseconds" << endl;
 		
 		cout << "===================================================================================" <<endl;
 		cout<<"SOLUTIONS"<<endl;;
@@ -103,7 +108,7 @@ void Rainbow_Clique_Finding::find_rainbow_cliques(INT depth) {
 		solutions.push_back(solution);
 		return;
 	}
-	cout << "===================================================================================" <<endl;
+	//cout << "===================================================================================" <<endl;
 	if (depth > 0) {
 		pt1 = current_clique[depth-1];
 		// find number of adjacent verticies to the vertex selected at
@@ -119,17 +124,17 @@ void Rainbow_Clique_Finding::find_rainbow_cliques(INT depth) {
 			}
 		}
 		live_points[depth][0] = num_live_points_at_depth;
-		cout<< "nb_live_points_at_depth_["<< depth <<"]: " << num_live_points_at_depth <<endl;
-		cout<<"points adj to "<< pt1 <<": ";
-		print_1_D_array(live_points[depth],live_points[depth][0]+1);
+		//cout<< "nb_live_points_at_depth_["<< depth <<"]: " << num_live_points_at_depth <<endl;
+		//cout<<"points adj to "<< pt1 <<": ";
+		//print_1_D_array(live_points[depth],live_points[depth][0]+1);
 	}else{
 		for (INT i=0,p=1; i<graph->nb_points;i++) {
 			live_points[depth][p++] = i;
 		}
 		live_points[depth][0] = graph->nb_points;
-		cout<<"nb_live_points_at_depth_["<< depth <<"]: "<<live_points[depth][0]<<endl;
-		cout<<"live_points array: ";
-		print_1_D_array(live_points[depth], live_points[depth][0]+1);
+		//cout<<"nb_live_points_at_depth_["<< depth <<"]: "<<live_points[depth][0]<<endl;
+		//cout<<"live_points array: ";
+		//print_1_D_array(live_points[depth], live_points[depth][0]+1);
 	}
 	
 	
@@ -138,16 +143,17 @@ void Rainbow_Clique_Finding::find_rainbow_cliques(INT depth) {
 	
 	
 	
+#if 0
 	cout<< "color_satisfied table: ";
 	print_1_D_array(color_satisfied, graph->nb_colors);
 	cout<< "Color Frequency Table: ";
 	print_1_D_array(color_frequency, graph->nb_colors);
-	
+#endif
 	
 	
 	// find color value with the lowest frequency
 	INT lowest_color = min_element_index(this->color_frequency,graph->nb_colors);
-	cout<< "Color with lowest frequency: " << lowest_color << " [This is the actual color]" <<endl;
+	//cout<< "Color with lowest frequency: " << lowest_color << " [This is the actual color]" <<endl;
 	
 	
 	/*
@@ -158,19 +164,20 @@ void Rainbow_Clique_Finding::find_rainbow_cliques(INT depth) {
 	this->color_satisfied[lowest_color] = TRUE;
 	// find how many points are there with the lowest value at current depth
 	for (INT i=0,p=1; i<live_points[depth][0]; ++i,++p) {
-		cout<<"color("<<live_points[depth][p]<<"): "<<graph->point_color[live_points[depth][p]]<<endl;
+		//cout<<"color("<<live_points[depth][p]<<"): "<<graph->point_color[live_points[depth][p]]<<endl;
 		if (graph->point_color[live_points[depth][p]] == lowest_color) {
 			if (!color_satisfied[lowest_color] && color_frequency[lowest_color]==0) {
 				cout<<"FOUND AN UNSATISFIED COLOR WITH A FREQUENCY OF ZERO"<<endl;
 				
 			}
-			cout<< "Picking Vertex " << live_points[depth][p] <<endl;
+			//cout<< "Picking Vertex " << live_points[depth][p] <<endl;
 			this->current_clique[depth] = live_points[depth][p];
-			cout<< "Calling find_rainbow_cliques("<<depth+1<<")"<<endl;
+			//cout<< "Calling find_rainbow_cliques("<<depth+1<<")"<<endl;
 			
 			find_rainbow_cliques(depth+1);
 			
 			
+#if 0
 			cout<< "["<<depth<<"]: " <<"Control returned from depth: " << depth+1 <<endl;
 			cout<<"lowest color: "<<lowest_color<<endl;
 			cout<< "color_satisfied table: ";
@@ -180,6 +187,7 @@ void Rainbow_Clique_Finding::find_rainbow_cliques(INT depth) {
 			
 			cout<<"current_clique: ";
 			print_1_D_array(current_clique, graph->nb_colors);
+#endif
 		}
 	}
 	this->color_satisfied[lowest_color] = FALSE;

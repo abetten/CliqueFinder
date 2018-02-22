@@ -44,7 +44,7 @@ public:
 	
 	
 private:
-	vector<vector<INT>> solutions;
+	vector<vector<INT> > solutions;
 	
 	GRAPH* graph = NULL;
 	vector<GRAPH*>* graph_vector = NULL;
